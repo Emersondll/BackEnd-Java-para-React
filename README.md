@@ -1,2 +1,2 @@
 # ServicoJavaReact
-Serviço Springboot com SpringData para alicação em React
+Serviço Springboot em Java para aplicação em React do FrontEnd
