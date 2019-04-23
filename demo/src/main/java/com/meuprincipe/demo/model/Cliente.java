@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String nome;
-	private String endereço;
+	private String endereco;
 	private String numero;
 	private String cidade;
 	private String bairro;
@@ -41,12 +41,12 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getNumero() {
