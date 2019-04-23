@@ -50,17 +50,18 @@ public class ProdutoResource {
 		ArrayList<Produto> produtosTamanhoGenero = new ArrayList<Produto>();
 
 		if (array.length == 1) {
-			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter,array[0]);
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter, array[0]);
 		}
 		if (array.length == 2) {
-			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter, array[0], array[1]);
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter, array[0],
+					array[1]);
 		}
 		if (array.length == 3) {
-			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter,array[0], array[1], array[2]);
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterType(filter, filter, array[0],
+					array[1], array[2]);
 		}
 
 		return produtosTamanhoGenero;
-	
 
 	}
 
@@ -95,13 +96,6 @@ public class ProdutoResource {
 		String dateFormatString = text.substring(0, 2) + "/" + text.substring(2, 4) + "/" + text.substring(4, 8);
 		return new ArrayList<Produto>(produtoRepository.listFilterDate(dateFormatString));
 	}
-
-	/*
-	 * @PostMapping("/produto") public Produto save(@RequestBody Produto produto,
-	 * Tamanho tamanho) { System.out.println(produto.toString());
-	 * System.out.println(tamanho.toString()); return
-	 * produtoRepository.save(produto); }
-	 */
 
 	@PostMapping("/produto")
 	public ProdutoTamanho save(@RequestBody ProdutoTamanho pt) {
