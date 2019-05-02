@@ -4,6 +4,7 @@ public class Tamanho {
 	private Boolean trn;
 	private Boolean tpp;
 	private Boolean tp;
+	private Boolean tm;
 	private Boolean tg;
 	private Boolean tgg;
 	private Boolean t1;
@@ -20,6 +21,14 @@ public class Tamanho {
 	private Boolean t16;
 	private Boolean t18;
 	private Boolean tu;
+
+	public Boolean getTm() {
+		return tm;
+	}
+
+	public void setTm(Boolean tm) {
+		this.tm = tm;
+	}
 
 	public Boolean getTrn() {
 		return trn;

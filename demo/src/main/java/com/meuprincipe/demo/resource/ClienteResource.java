@@ -19,6 +19,7 @@ import com.meuprincipe.demo.repository.ClienteRepository;
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin(origins = "*")
+
 public class ClienteResource {
 
 	@Autowired
