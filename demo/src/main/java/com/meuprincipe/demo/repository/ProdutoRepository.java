@@ -90,12 +90,27 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 					produto.setVenda(pt.getProduto().getVenda());
 					produto.setDataCadastro(sdf.format(data));
 
-					str = pt.getProduto().getCodigo().toUpperCase() + campo.getName().toUpperCase()
-							+ codigo.getSequencia().toString() + str2 + count;
+					if (produto.getTamanho().toUpperCase().contains("U")) {
+						str = pt.getProduto().getCodigo().toUpperCase() + "T" + produto.getTamanho()
+								+ codigo.getSequencia().toString() + str2 + count;
+					}
 
-					String strNew = str.replace("T", "");
+					else if (produto.getTamanho().length() >= 2) {
+						str = pt.getProduto().getCodigo().toUpperCase() + produto.getTamanho()
+								+ codigo.getSequencia().toString() + str2 + count;
+					}
 
-					produto.setCodigo(strNew);
+					else if (produto.getTamanho().toUpperCase().contains("P")
+							|| produto.getTamanho().toUpperCase().contains("M")
+							|| produto.getTamanho().toUpperCase().contains("G")) {
+
+						str = pt.getProduto().getCodigo().toUpperCase() + produto.getTamanho() + "0"
+								+ codigo.getSequencia().toString() + str2 + count;
+					} else
+						str = pt.getProduto().getCodigo().toUpperCase() + "0" + produto.getTamanho()
+								+ codigo.getSequencia().toString() + str2 + count;
+
+					produto.setCodigo(str);
 					produtoList.add(produto);
 				}
 				saveAll(produtoList);

@@ -123,7 +123,7 @@ public class Produto implements Serializable {
 	}
 
 	public void setTamanho(String tamanho) {
-		this.tamanho = tamanho;
+		this.tamanho = tamanho.replace("T", "");
 	}
 
 }
