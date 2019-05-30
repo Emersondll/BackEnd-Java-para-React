@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meuprincipe.demo.model.SaidaItens;
-import com.meuprincipe.demo.repository.SaidaItensRepository;
+import com.meuprincipe.demo.model.VendaItens;
+import com.meuprincipe.demo.repository.VendaItensRepository;
 
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin(origins = "*")
-public class SaidaItensResource {
+public class VendaItensResource {
 
 	@Autowired
-	SaidaItensRepository saidaItensRepository;
+	VendaItensRepository vendaItensRepository;
 
-	@GetMapping("/saidaItens")
-	public List<SaidaItens> listAll() {
-		return saidaItensRepository.findAll();
+	@GetMapping("/vendas")
+	public List<VendaItens> listAll() {
+		return vendaItensRepository.findAll();
 	}
 
-	@PostMapping("/saidaItens")
-	public SaidaItens save(@RequestBody SaidaItens saidaItens) {
-		return saidaItensRepository.save(saidaItens);
+	@PostMapping("/venda")
+	public VendaItens save(@RequestBody VendaItens vendas) {
+		return vendaItensRepository.save(vendas);
 	}
 
 }
