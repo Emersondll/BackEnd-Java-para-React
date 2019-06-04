@@ -36,8 +36,55 @@ public class ProdutoResource {
 	}
 
 	@GetMapping("/produtoDisponivel")
-	public List<Produto> listAllDisponivel() {
-		return new ArrayList<Produto>(produtoRepository.listAllDisponivel());
+	public List<Produto> listAllAvailable() {
+		return new ArrayList<Produto>(produtoRepository.listAllAvailable());
+	}
+
+	@GetMapping("/produtoDisponivel/{filter}/{genero}")
+	public List<Produto> listFilterAvailable(@PathVariable(value = "filter") String filter,
+			@PathVariable(value = "genero") String genero) {
+
+		String frase = genero;
+		String array[] = new String[3];
+		array = frase.split(",");
+		ArrayList<Produto> produtosTamanhoGenero = new ArrayList<Produto>();
+
+		if (array.length == 1) {
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterTypeAvailable(filter, filter,
+					array[0]);
+		}
+		if (array.length == 2) {
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterTypeAvailable(filter, filter,
+					array[0], array[1]);
+		}
+		if (array.length == 3) {
+			produtosTamanhoGenero = (ArrayList<Produto>) produtoRepository.listFilterTypeAvailable(filter, filter,
+					array[0], array[1], array[2]);
+		}
+
+		return produtosTamanhoGenero;
+
+	}
+
+	@GetMapping("/produtoDisponivel/type/{genero}")
+	public List<Produto> listTypeAvailable(@PathVariable(value = "genero") String genero) {
+
+		String frase = genero;
+		String array[] = new String[3];
+		array = frase.split(",");
+		ArrayList<Produto> produtosGenero = new ArrayList<Produto>();
+
+		if (array.length == 1) {
+			produtosGenero = (ArrayList<Produto>) produtoRepository.listTypeAvailable(array[0]);
+		}
+		if (array.length == 2) {
+			produtosGenero = (ArrayList<Produto>) produtoRepository.listTypeAvailable(array[0], array[1]);
+		}
+		if (array.length == 3) {
+			produtosGenero = (ArrayList<Produto>) produtoRepository.listTypeAvailable(array[0], array[1], array[2]);
+		}
+
+		return produtosGenero;
 	}
 
 	@GetMapping("/produtos/{filter}/{genero}")

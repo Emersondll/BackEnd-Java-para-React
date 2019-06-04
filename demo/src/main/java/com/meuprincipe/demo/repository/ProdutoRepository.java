@@ -23,7 +23,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	Produto findById(long id);
 
 	@Query(value = "SELECT distinct P.* FROM PRODUTO P WHERE P.QUANTIDADE > 0", nativeQuery = true)
-	Collection<Produto> listAllDisponivel();
+	Collection<Produto> listAllAvailable();
 
 	@Query(value = "SELECT *  FROM produto where (codigo =upper(?) or tamanho = upper(?)) and tipo in(?)", nativeQuery = true)
 	Collection<Produto> listFilterType(String filter, String filter2, String genero1);
@@ -33,6 +33,25 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
 	@Query(value = "SELECT *  FROM produto where (codigo =upper(?) or tamanho = upper(?)) and tipo in(?,?,?)", nativeQuery = true)
 	Collection<Produto> listFilterType(String filter, String filter2, String genero1, String genero2, String genero3);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and (codigo =upper(?) or tamanho = upper(?)) and tipo in(?)", nativeQuery = true)
+	Collection<Produto> listFilterTypeAvailable(String filter, String filter2, String genero1);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and (codigo =upper(?) or tamanho = upper(?)) and tipo in(?,?)", nativeQuery = true)
+	Collection<Produto> listFilterTypeAvailable(String filter, String filter2, String genero1, String genero2);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and (codigo =upper(?) or tamanho = upper(?)) and tipo in(?,?,?)", nativeQuery = true)
+	Collection<Produto> listFilterTypeAvailable(String filter, String filter2, String genero1, String genero2,
+			String genero3);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and tipo in(?)", nativeQuery = true)
+	Collection<Produto> listTypeAvailable(String genero);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and tipo in(?,?)", nativeQuery = true)
+	Collection<Produto> listTypeAvailable(String genero, String genero2);
+
+	@Query(value = "SELECT *  FROM produto where QUANTIDADE > 0 and tipo in(?,?,?)", nativeQuery = true)
+	Collection<Produto> listTypeAvailable(String genero, String genero2, String genero3);
 
 	@Query(value = "SELECT *  FROM produto where tipo in(?)", nativeQuery = true)
 	Collection<Produto> listType(String genero);
