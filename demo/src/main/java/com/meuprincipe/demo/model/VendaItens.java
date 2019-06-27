@@ -30,6 +30,15 @@ public class VendaItens implements Serializable {
 	private String nomeCliente;
 	private String motivo;
 	private String dataAtualizacao;
+	private String idClienteData;
+
+	public String getIdClienteData() {
+		return idClienteData;
+	}
+
+	public void setIdClienteData(String idClienteData) {
+		this.idClienteData = idClienteData;
+	}
 
 	public String getDataAtualizacao() {
 		return dataAtualizacao;

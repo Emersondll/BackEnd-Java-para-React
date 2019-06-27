@@ -1,5 +1,6 @@
 package com.meuprincipe.demo.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class VendaItensResource {
 	@GetMapping("/vendas")
 	public List<VendaItens> listAll() {
 		return vendaItensRepository.findAll();
+	}
+	
+	@GetMapping("/vendasConsolidadas")
+	public ArrayList<Object> listAllCost() {
+		return new ArrayList<Object>(vendaItensRepository.listAllCost());
 	}
 
 	@PostMapping("/venda")
