@@ -29,6 +29,8 @@ public class Produto implements Serializable {
 	private Integer quantidade;
 	private String tamanho;
 	private String dataCadastro;
+	
+	
 
 	public String getDataCadastro() {
 		return dataCadastro;

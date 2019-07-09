@@ -32,6 +32,23 @@ public class VendaItens implements Serializable {
 	private String dataAtualizacao;
 	private String idClienteData;
 
+	
+		
+	
+	public VendaItens() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public VendaItens(long id, Float venda, Integer idCliente, String nomeCliente, String dataAtualizacao) {
+		super();
+		this.id = id;
+		this.venda = venda;
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.dataAtualizacao = dataAtualizacao;
+	}
+
 	public String getIdClienteData() {
 		return idClienteData;
 	}

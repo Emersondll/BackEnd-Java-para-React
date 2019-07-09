@@ -8,13 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import com.meuprincipe.demo.model.VendaItens;
 
 public interface VendaItensRepository extends JpaRepository<VendaItens, Long> {
-	
+
 	VendaItens findById(long id);
 	
-	@Query(value = "SELECT id_cliente, nome_cliente, sum(venda), data_atualizacao\r\n" + 
-			"  FROM venda group by id_cliente,nome_cliente, data_atualizacao\r\n" + 
-			"  order by id_cliente, data_atualizacao desc;", nativeQuery = true)
-	Collection<Object> listAllCost();
+	@Query(value = "SELECT * FROM venda where upper(motivo) = upper('Reservado') order by data_atualizacao desc, id_cliente", nativeQuery = true)
+	Collection<VendaItens> listAllReserv();
 	
+	@Query(value = "SELECT * FROM venda where upper(motivo) = upper('Venda') order by data_atualizacao desc, id_cliente", nativeQuery = true)
+	Collection<VendaItens> listAllSale();
 
 }

@@ -26,10 +26,15 @@ public class VendaItensResource {
 	public List<VendaItens> listAll() {
 		return vendaItensRepository.findAll();
 	}
-	
-	@GetMapping("/vendasConsolidadas")
-	public ArrayList<Object> listAllCost() {
-		return new ArrayList<Object>(vendaItensRepository.listAllCost());
+
+	@GetMapping("/vendasReserv")
+	public List<VendaItens> listAllReserv() {
+		return new ArrayList<VendaItens>(vendaItensRepository.listAllReserv());
+	}
+
+	@GetMapping("/vendasSale")
+	public List<VendaItens> listAllSale() {
+		return new ArrayList<VendaItens>(vendaItensRepository.listAllSale());
 	}
 
 	@PostMapping("/venda")
